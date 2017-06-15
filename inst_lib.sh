@@ -10,6 +10,13 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
+echo "https://github.com/google/flatbuffers.git"
+git clone https://github.com/google/flatbuffers.git
+[ -d flatbuffers/ ] && cd flatbuffers/ && \
+	echo "cmake ." && cmake . && \
+	echo "make -j$cpus" && make -j$cpus && sudo make install
+cd $libfolder
+
 echo "git clone https://github.com/actor-framework/actor-framework.git"
 git clone https://github.com/actor-framework/actor-framework.git
 [ -d actor-framework/ ] && cd actor-framework/ && \
