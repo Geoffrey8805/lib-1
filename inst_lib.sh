@@ -10,7 +10,15 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
-echo "https://github.com/google/flatbuffers.git"
+echo "git clone https://github.com/openssl/openssl.git -b OpenSSL_1_0_2-stable"
+git clone https://github.com/openssl/openssl.git -b OpenSSL_1_0_2-stable
+[ -d openssl/ ] && cd openssl/ && \
+	echo "./config  --prefix=/usr/local --openssldir=/usr/local/ssl" && \
+	./config shared --prefix=/usr/local --openssldir=/usr/local/ssl && \
+	echo "make -j$cpus" && make -j$cpus && sudo make install
+cd $libfolder
+
+echo "git clone https://github.com/google/flatbuffers.git"
 git clone https://github.com/google/flatbuffers.git
 [ -d flatbuffers/ ] && cd flatbuffers/ && \
 	echo "cmake ." && cmake . && \
