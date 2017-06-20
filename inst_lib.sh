@@ -10,6 +10,15 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
+echo "git clone https://github.com/google/leveldb.git"
+git clone https://github.com/google/leveldb.git
+[ -d leveldb/ ] && cd leveldb/ && \
+	echo "make -j$cpus" && make -j$cpus && \
+	sudo cp -R include/* /usr/local/include/ && \
+	sudo cp out-shared/lib* /usr/local/lib/ && \
+	sudo cp out-static/lib*.a /usr/local/lib/
+cd $libfolder
+
 echo "git clone https://github.com/openssl/openssl.git -b OpenSSL_1_0_2-stable"
 git clone https://github.com/openssl/openssl.git -b OpenSSL_1_0_2-stable
 [ -d openssl/ ] && cd openssl/ && \
