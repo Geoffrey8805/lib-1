@@ -10,6 +10,13 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
+echo "git clone https://github.com/Ravenbrook/mps.git -b version/1.116"
+git clone https://github.com/Ravenbrook/mps.git -b version/1.116
+[ -d mps/ ] && cd mps/ && \
+	echo "./configure" && ./configure && \
+	echo "make -j$cpus" && make -j$cpus && sudo make install
+cd $libfolder
+
 echo "git clone https://github.com/google/leveldb.git"
 git clone https://github.com/google/leveldb.git
 [ -d leveldb/ ] && cd leveldb/ && \
