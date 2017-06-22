@@ -10,6 +10,14 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
+echo "git clone https://github.com/gperftools/gperftools.git"
+git clone https://github.com/gperftools/gperftools.git
+[ -d gperftools/ ] && cd gperftools/ && \
+	echo "./autogen.sh" && ./autogen.sh && \
+	echo "./configure" && ./configure && \
+	echo "make -j$cpus" && make -j$cpus && sudo make install
+cd $libfolder
+
 echo "git clone https://github.com/Ravenbrook/mps.git -b version/1.116"
 git clone https://github.com/Ravenbrook/mps.git -b version/1.116
 [ -d mps/ ] && cd mps/ && \
