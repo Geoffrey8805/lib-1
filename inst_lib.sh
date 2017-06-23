@@ -54,7 +54,7 @@ git clone https://github.com/actor-framework/actor-framework.git
 [ -d actor-framework/ ] && cd actor-framework/ && \
 	echo "./configure --build-static --with-runtime-checks --no-examples --no-unit-tests --no-opencl --no-benchmarks --no-tools --no-python" && \
 	./configure --build-static --with-runtime-checks --no-examples --no-unit-tests --no-opencl --no-benchmarks --no-tools --no-python && \
-	echo "make -j$cpus" && make -j$cpus && sudo make install
+	echo "make" && make && sudo make install
 cd $libfolder
 
 echo "git clone https://github.com/zeromq/libzmq.git"
@@ -116,4 +116,8 @@ cd $libfolder
 
 echo "git clone https://github.com/linux-can/can-utils.git"
 git clone https://github.com/linux-can/can-utils.git
+cd $libfolder
+
+echo "git clone https://github.com/WiringPi/WiringPi.git"
+git clone https://github.com/WiringPi/WiringPi.git
 cd $libfolder
