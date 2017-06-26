@@ -61,8 +61,8 @@ echo "git clone https://github.com/zeromq/libzmq.git -b v4.2.2"
 git clone https://github.com/zeromq/libzmq.git -b v4.2.2
 [ -d libzmq/ ] && cd libzmq/ && \
 	echo "./autogen.sh" && ./autogen.sh && \
-	echo "./configure --enable-static=yes --enable-valgrind" && \
-	./configure --enable-static=yes --enable-valgrind && \
+	echo "./configure --enable-static=yes" && \
+	./configure --enable-static=yes && \
 	echo "make -j$cpus" && make -j$cpus && sudo make install
 cd $libfolder
 
@@ -82,7 +82,7 @@ echo "git clone https://github.com/google/protobuf.git -b v3.3.2"
 git clone https://github.com/google/protobuf.git -b v3.3.2
 [ -d protobuf/ ] && cd protobuf/ && \
 	echo "./autogen.sh" && ./autogen.sh && \
-	echo "./configure --with-zlib" && ./configure --with-zlib && \
+	echo "./configure" && ./configure && \
 	echo "make -j$cpus" && make -j$cpus && sudo make install
 cd $libfolder
 
