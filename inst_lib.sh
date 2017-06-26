@@ -18,12 +18,12 @@ git clone https://github.com/gperftools/gperftools.git -b gperftools-2.5.93
 	echo "make -j$cpus" && make -j$cpus && sudo make install
 cd $libfolder
 
-echo "git clone https://github.com/Ravenbrook/mps.git -b release-1.115.0"
-git clone https://github.com/Ravenbrook/mps.git -b release-1.115.0
-[ -d mps/ ] && cd mps/ && \
-	echo "./configure" && ./configure && \
-	echo "make -j$cpus" && make -j$cpus && sudo make install
-cd $libfolder
+#echo "git clone https://github.com/Ravenbrook/mps.git -b release-1.115.0"
+#git clone https://github.com/Ravenbrook/mps.git -b release-1.115.0
+#[ -d mps/ ] && cd mps/ && \
+#	echo "./configure" && ./configure && \
+#	echo "make -j$cpus" && make -j$cpus && sudo make install
+#cd $libfolder
 
 echo "git clone https://github.com/google/leveldb.git -b v1.20"
 git clone https://github.com/google/leveldb.git -b v1.20
