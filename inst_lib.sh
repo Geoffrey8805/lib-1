@@ -105,7 +105,9 @@ git clone https://github.com/paulftw/hiberlite.git
 	echo "git submodule update" && git submodule update && \
 	echo "make -j$cpus" && make -j$cpus && \
 	echo "sudo cp -R include/ /usr/local/include/hiberlite/" && sudo cp -R include/ /usr/local/include/hiberlite/ && \
-	echo "sudo cp lib*.a /usr/local/lib/" && sudo cp lib*.a /usr/local/lib/
+	echo "sudo cp lib*.a /usr/local/lib/" && sudo cp lib*.a /usr/local/lib/ && \
+	cd sqlite-amalgamation/ && \
+	echo "sudo cp *.h /usr/local/include/hiberlite/" && sudo cp *.h /usr/local/include/hiberlite/
 cd $libfolder
 
 echo "git clone https://github.com/nlohmann/json.git"
