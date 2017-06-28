@@ -10,6 +10,35 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
+function run_args() {
+	folder=$PWD
+
+    name=$1[@]
+    args=("${!name}")
+
+	for i in "${args[@]}" ; do
+		echo ${i}
+        ${i}
+		ret=${?}
+		echo ret=${ret}
+		[ ${ret} -gt 0 ] && [ ${ret} -lt 128 ] && break
+    done
+
+	cd $folder
+}
+
+gperftools=(
+	"git clone https://github.com/gperftools/gperftools.git -b gperftools-2.5.93"
+	"cd gperftools/"
+	"./autogen.sh"
+	"./configure"
+	"make -j${cpus}"
+	"sudo make install"
+)
+run_args gperftools
+
+exit 0
+
 echo "git clone https://github.com/gperftools/gperftools.git -b gperftools-2.5.93"
 git clone https://github.com/gperftools/gperftools.git -b gperftools-2.5.93
 [ -d gperftools/ ] && cd gperftools/ && \
