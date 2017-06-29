@@ -155,6 +155,17 @@ mps=(
 	"sudo make install"
 )
 
+echo args=$#
+if [ $# -gt 0 ] ; then
+	for i in $@
+	do
+		echo ${i}
+		run_args ${i}
+	done
+
+	exit 0
+fi
+
 all_libs=(
 	"gperftools"
 	"leveldb"
@@ -172,16 +183,4 @@ all_libs=(
 	"can"
 	"WiringPi"
 )
-
-echo args=$#
-if [ $# -gt 0 ] ; then
-	for i in $@
-	do
-		echo ${i}
-		run_args ${i}
-	done
-
-	exit 0
-fi
-
 build all_libs
