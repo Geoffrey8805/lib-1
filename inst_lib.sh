@@ -104,7 +104,7 @@ protobuf=(
 	"git clone https://github.com/google/protobuf.git -b v3.3.2"
 	"cd protobuf/"
 	"./autogen.sh"
-	"/configure"
+	"./configure"
 	"make -j${cpus}"
 	"sudo make install"
 )
