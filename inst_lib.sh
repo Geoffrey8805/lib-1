@@ -10,8 +10,8 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
-CFLAGS+="-fPIC"
-CPPFLAGS+="-std=c++11 -fPIC"
+export CFLAGS+="-fPIC"
+export CPPFLAGS+="-std=c++11 -fPIC"
 
 function run_args() {
 	folder=$PWD
