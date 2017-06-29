@@ -139,6 +139,7 @@ hiberlite=(
 
 json=(
 	"git clone https://github.com/nlohmann/json.git"
+	"cd json/src/"
 	"sudo cp *.hpp /usr/local/include/"
 )
 
