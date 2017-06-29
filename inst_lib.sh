@@ -61,7 +61,7 @@ flatbuffers=(
 	"sudo make install"
 )
 
-actor-framework=(
+actor=(
 	"git clone https://github.com/actor-framework/actor-framework.git -b 0.15.3"
 	"cd actor-framework/"
 	"./configure --build-static --with-runtime-checks --no-examples --no-unit-tests --no-opencl --no-benchmarks --no-tools --no-python"
@@ -129,7 +129,7 @@ json=(
 	"sudo cp *.hpp /usr/local/include/"
 )
 
-can-utils=(
+can=(
 	"git clone https://github.com/linux-can/can-utils.git"
 )
 
@@ -150,7 +150,7 @@ all_libs=(
 	"leveldb"
 	"openssl"
 	"flatbuffers"
-	"actor-framework"
+	"actor"
 	"libzmq"
 	"azmq"
 	"cppzmq"
@@ -159,7 +159,7 @@ all_libs=(
 	"easyloggingpp"
 	"hiberlite"
 	"json"
-	"can-utils"
+	"can"
 	"WiringPi"
 )
 
