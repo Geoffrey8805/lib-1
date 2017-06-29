@@ -10,9 +10,6 @@ if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 fi
 echo "cpu=$cpus"
 
-export CFLAGS+="-fPIC"
-export CPPFLAGS+="-std=c++11 -fPIC"
-
 function run_args() {
 	folder=$PWD
 
@@ -116,7 +113,7 @@ log4cplus=(
 	"git clone https://github.com/log4cplus/log4cplus.git -b REL_1_2_0"
 	"cd log4cplus/"
 	"autoreconf -ivf"
-	"./configure --enable-static=yes --enable-threads=yes"
+	"bash -c CFLAGS+=\"-fPIC\" CPPFLAGS+=\"-std=c++11 -fPIC\" ./configure --enable-static=yes --enable-threads=yes"
 	"make -j${cpus}"
 	"sudo make install"
 )
