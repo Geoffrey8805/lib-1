@@ -21,10 +21,20 @@ function run_args() {
         ${i}
 		ret=${?}
 		echo ret=${ret}
-		[ ${ret} -gt 0 ] && [ ${ret} -lt 128 ] && break
+		[ ${ret} -gt 0 ] && [ ${ret} -lt 128 ] && exit 1
     done
 
 	cd $folder
+}
+
+function build() {
+	name=$1[@]
+    args=("${!name}")
+
+	for i in "${args[@]}" ; do
+		echo ${i}
+		run_args ${i}
+    done
 }
 
 gperftools=(
@@ -174,8 +184,4 @@ if [ $# -gt 0 ] ; then
 	exit 0
 fi
 
-for i in $all_libs
-do
-	echo ${i}
-	run_args ${i}
-done
+build all_libs
