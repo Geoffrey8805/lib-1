@@ -113,8 +113,8 @@ log4cplus=(
 	"git clone https://github.com/log4cplus/log4cplus.git -b REL_1_2_0"
 	"cd log4cplus/"
 	"autoreconf -ivf"
-	"bash -c CFLAGS+=\"-fPIC\" CPPFLAGS+=\"-std=c++11 -fPIC\" ./configure --enable-static=yes --enable-threads=yes"
-	"make -j${cpus}"
+	"./configure --enable-static=yes --enable-threads=yes"
+	"make -j${cpus} CFLAGS+=-fPIC CPPFLAGS+=-fPIC CPPFLAGS+=-std=c++11"
 	"sudo make install"
 )
 
@@ -178,9 +178,9 @@ all_libs=(
 	"cppzmq"
 	"protobuf"
 	"log4cplus"
-	"easyloggingpp"
 	"hiberlite"
 	"json"
+	"easyloggingpp"
 	"can"
 	"WiringPi"
 )
