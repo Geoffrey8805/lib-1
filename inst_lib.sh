@@ -56,7 +56,7 @@ leveldb=(
 )
 
 openssl=(
-	"git clone https://github.com/openssl/openssl.git -b OpenSSL_1_1_0-stable"
+	"git clone https://github.com/openssl/openssl.git -b OpenSSL_1_0_2-stable"
 	"cd openssl/"
 	"./config shared --prefix=/usr/local --openssldir=/usr/local/ssl"
 	"make -j${cpus}"
