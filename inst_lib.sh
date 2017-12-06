@@ -156,6 +156,14 @@ mps=(
 	"sudo make install"
 )
 
+jsoncpp=(
+	"git clone https://github.com/open-source-parsers/jsoncpp.git"
+	"cd jsoncpp/"
+	"cmake ."
+	"make -j${cpus}"
+	"sudo make install"
+)
+
 echo args=$#
 if [ $# -gt 0 ] ; then
 	for i in $@
