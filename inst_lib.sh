@@ -186,10 +186,8 @@ all_libs=(
 	"cppzmq"
 	"protobuf"
 	"log4cplus"
-	"hiberlite"
+	"jsoncpp"
 	"json"
 	"easyloggingpp"
-	"can"
-	"WiringPi"
 )
 build all_libs
