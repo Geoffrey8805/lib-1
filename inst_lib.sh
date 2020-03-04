@@ -4,7 +4,7 @@
 libfolder=$PWD
 echo $libfolder
 
-cpus=$(cat /proc/cpuinfo| grep "processor"| wc -l)
+cpus=$(cat /proc/cpuinfo | grep "processor" | wc -l)
 if [ -z $cpus ] || [ $cpus -lt 1 ]; then
 	cpus=4
 fi
@@ -13,29 +13,38 @@ echo "cpu=$cpus"
 function run_args() {
 	folder=$PWD
 
-    name=$1[@]
-    args=("${!name}")
+	name=$1[@]
+	args=("${!name}")
 
-	for i in "${args[@]}" ; do
+	for i in "${args[@]}"; do
 		echo ${i}
-        ${i}
+		${i}
 		ret=${?}
 		echo ret=${ret}
 		[ ${ret} -gt 0 ] && [ ${ret} -lt 128 ] && exit 1
-    done
+	done
 
 	cd $folder
 }
 
 function build() {
 	name=$1[@]
-    args=("${!name}")
+	args=("${!name}")
 
-	for i in "${args[@]}" ; do
+	for i in "${args[@]}"; do
 		echo ${i}
 		run_args ${i}
-    done
+	done
 }
+
+boost=(
+	"wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz"
+	"tar xzvf boost_1_67_0.tar.gz"
+	"cd boost_1_67_0"
+	"./bootstrap.sh"
+	"./b2 -j${cpus}"
+	"sudo ./b2 -j${cpus} install"
+)
 
 gperftools=(
 	"git clone https://github.com/gperftools/gperftools.git -b gperftools-2.5.93"
@@ -72,11 +81,12 @@ flatbuffers=(
 )
 
 actor=(
-	"git clone https://github.com/actor-framework/actor-framework.git -b 0.15.3"
+	"git clone https://github.com/actor-framework/actor-framework.git -b 0.17.4"
 	"cd actor-framework/"
-	"./configure --build-static --with-runtime-checks --no-examples --no-unit-tests --no-opencl --no-benchmarks --no-tools --no-python"
+	"./configure --build-static"
+	"cd build"
 	"make -j${cpus}"
-	"sudo make install"
+	"sudo make -j${cpus} install"
 )
 
 libzmq=(
@@ -165,9 +175,8 @@ jsoncpp=(
 )
 
 echo args=$#
-if [ $# -gt 0 ] ; then
-	for i in $@
-	do
+if [ $# -gt 0 ]; then
+	for i in $@; do
 		echo ${i}
 		run_args ${i}
 	done
@@ -176,18 +185,19 @@ if [ $# -gt 0 ] ; then
 fi
 
 all_libs=(
-	"gperftools"
-	"leveldb"
-	"openssl"
-	"flatbuffers"
+	"boost"
+	# "gperftools"
+	# "leveldb"
+	# "openssl"
+	# "flatbuffers"
 	"actor"
-	"libzmq"
-	"azmq"
-	"cppzmq"
-	"protobuf"
-	"log4cplus"
-	"jsoncpp"
-	"json"
-	"easyloggingpp"
+	# "libzmq"
+	# "azmq"
+	# "cppzmq"
+	# "protobuf"
+	# "log4cplus"
+	# "jsoncpp"
+	# "json"
+	# "easyloggingpp"
 )
 build all_libs
