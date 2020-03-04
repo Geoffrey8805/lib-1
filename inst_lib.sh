@@ -39,6 +39,7 @@ function build() {
 
 boost=(
 	"wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz"
+	"sleep 1"
 	"tar xzvf boost_1_67_0.tar.gz"
 	"cd boost_1_67_0"
 	"./bootstrap.sh"
