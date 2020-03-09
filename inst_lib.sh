@@ -81,7 +81,7 @@ flatbuffers=(
 	"sudo make install"
 )
 
-actor=(
+caf=(
 	"git clone https://github.com/actor-framework/actor-framework.git -b 0.17.4"
 	"cd actor-framework/"
 	"./configure --build-static"
@@ -191,7 +191,7 @@ all_libs=(
 	# "leveldb"
 	# "openssl"
 	# "flatbuffers"
-	"actor"
+	"caf"
 	# "libzmq"
 	# "azmq"
 	# "cppzmq"
