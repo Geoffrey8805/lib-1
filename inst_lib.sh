@@ -175,6 +175,13 @@ jsoncpp=(
 	"sudo make install"
 )
 
+mqttc=(
+	"git clone https://github.com/eclipse/paho.mqtt.c.git -b v1.3.1"
+	"cd paho.mqtt.c/"
+	"make -j${cpus}"
+	"sudo make install"
+)
+
 echo args=$#
 if [ $# -gt 0 ]; then
 	for i in $@; do
@@ -200,5 +207,6 @@ all_libs=(
 	# "jsoncpp"
 	# "json"
 	# "easyloggingpp"
+	"mqttc"
 )
 build all_libs
