@@ -178,6 +178,7 @@ jsoncpp=(
 mqttc=(
 	"git clone https://github.com/eclipse/paho.mqtt.c.git -b v1.3.1"
 	"cd paho.mqtt.c/"
+	"cmake -DPAHO_BUILD_STATIC=YES ."
 	"make -j${cpus}"
 	"sudo make install"
 )
