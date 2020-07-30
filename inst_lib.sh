@@ -82,7 +82,7 @@ flatbuffers=(
 )
 
 caf=(
-	"git clone https://github.com/actor-framework/actor-framework.git -b 0.17.4"
+	"git clone https://github.com/actor-framework/actor-framework.git -b 0.17.6"
 	"cd actor-framework/"
 	"./configure --build-static"
 	"cd build"
