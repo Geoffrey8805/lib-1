@@ -183,6 +183,14 @@ mqttc=(
 	"sudo make install"
 )
 
+mqttcpp=(
+	"git clone https://github.com/eclipse/paho.mqtt.cpp.git -b v1.1"
+	"cd paho.mqtt.cpp/"
+	"cmake -Bbuild -H. -DPAHO_WITH_SSL=OFF -DPAHO_ENABLE_TESTING=OFF"
+	"sudo cmake --build build/ --target install -j${cpus}"
+	"sudo ldconfig"
+)
+
 echo args=$#
 if [ $# -gt 0 ]; then
 	for i in $@; do
