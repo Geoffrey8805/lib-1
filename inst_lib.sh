@@ -203,7 +203,7 @@ glog=(
 x264=(
 	"git clone https://github.com/mirror/x264.git -b stable"
 	"cd x264"
-	"./configure --enable-static --enable-pic --disable-asm"
+	"./configure --enable-static --enable-pic"
 	"make -j${cpus}"
 	"sudo make install"
 )
@@ -213,7 +213,7 @@ ffmpeg=(
 	"sleep 1"
 	"tar xzvf ffmpeg-3.4.6.tar.gz"
 	"cd ffmpeg-3.4.6"
-	"./configure --enable-static --disable-shared --enable-gpl --enable-libx264 --enable-pic --disable-libxcb --disable-x86asm"
+	"./configure --enable-static --disable-shared --enable-gpl --enable-libx264 --enable-pic --disable-libxcb"
 	"make -j${cpus}"
 	"sudo make install"
 )
