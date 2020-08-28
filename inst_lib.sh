@@ -201,7 +201,7 @@ glog=(
 )
 
 x264=(
-	"git clone https://github.com/mirror/x264.git -b stable"
+	"git clone https://code.videolan.org/videolan/x264.git -b stable"
 	"cd x264"
 	"./configure --enable-static --enable-pic"
 	"make -j${cpus}"
