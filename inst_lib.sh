@@ -112,7 +112,7 @@ cppzmq=(
 )
 
 protobuf=(
-	"git clone https://github.com/google/protobuf.git -b v3.3.2"
+	"git clone https://github.com/google/protobuf.git -b v3.8.0"
 	"cd protobuf/"
 	"./autogen.sh"
 	"./configure"
@@ -191,6 +191,49 @@ mqttcpp=(
 	"sudo ldconfig"
 )
 
+glog=(
+	"git clone https://github.com/google/glog.git -b v0.4.0"
+	"cd glog"
+	"./autogen.sh"
+	"./configure"
+	"make -j${cpus}"
+	"sudo make install"
+)
+
+x264=(
+	"git clone https://github.com/mirror/x264.git -b stable"
+	"cd x264"
+	"./configure --enable-static --enable-pic --disable-asm"
+	"make -j${cpus}"
+	"sudo make install"
+)
+
+ffmpeg=(
+	"wget http://www.ffmpeg.org/releases/ffmpeg-3.4.6.tar.gz"
+	"sleep 1"
+	"tar xzvf ffmpeg-3.4.6.tar.gz"
+	"cd ffmpeg-3.4.6"
+	"./configure --enable-static --disable-shared --enable-gpl --enable-libx264 --enable-pic --disable-libxcb --disable-x86asm"
+	"make -j${cpus}"
+	"sudo make install"
+)
+
+jthread=(
+	"git clone https://github.com/j0r1/JThread.git -b v1.3.1"
+	"cd JThread"
+	"cmake ."
+	"make -j${cpus}"
+	"sudo make install"
+)
+
+jrtp=(
+	"git clone https://github.com/j0r1/JRTPLIB.git -b v3.11.2"
+	"cd JRTPLIB"
+	"cmake -DJRTPLIB_COMPILE_STATIC=YES ."
+	"make -j${cpus}"
+	"sudo make install"
+)
+
 echo args=$#
 if [ $# -gt 0 ]; then
 	for i in $@; do
@@ -202,12 +245,12 @@ if [ $# -gt 0 ]; then
 fi
 
 all_libs=(
-	"boost"
+	# "boost"
 	# "gperftools"
 	# "leveldb"
 	# "openssl"
 	# "flatbuffers"
-	"caf"
+	# "caf"
 	# "libzmq"
 	# "azmq"
 	# "cppzmq"
@@ -217,5 +260,10 @@ all_libs=(
 	# "json"
 	# "easyloggingpp"
 	"mqttc"
+	"glog"
+	"x264"
+	"ffmpeg"
+	"jthread"
+	"jrtp"
 )
 build all_libs
