@@ -254,7 +254,7 @@ all_libs=(
 	# "libzmq"
 	# "azmq"
 	# "cppzmq"
-	# "protobuf"
+	"protobuf"
 	# "log4cplus"
 	# "jsoncpp"
 	# "json"
